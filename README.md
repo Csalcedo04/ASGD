@@ -1,14 +1,6 @@
-## Flask SQLAlchemy CRUD
+## Aplicacion de seguimiento y gestión de documentos
 
-this project is a CRUD application using flask and mysql using SQLAlchemy
-
-### Installation with docker-compose
-
-```
-git clone https://github.com/FaztWeb/flask-sqlalchemy-crud
-cd flask-sqlalchemy-crud
-docker-compose up
-```
+este proyecto es una aplicación oriendata al seguimiento y genstion de la venta y el alquiler de documento usando flask y mysql con la libreria SQLAlchemy
 
 ### Manual Installation
 
@@ -28,8 +20,8 @@ MYSQL_PORT=
 ```
 
 ```
-git clone https://github.com/FaztWeb/flask-sqlalchemy-crud
-cd flask-sqlalchemy-crud
+git clone https://github.com/Csalcedo04/ASGD.git
+cd ASGD
 pip install -r requirements.txt
 python index.py
 ```
