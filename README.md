@@ -20,7 +20,7 @@ MYSQL_PORT=
 ```
 
 ```
-git clone 
+git clone https://github.com/Csalcedo04/ASGD.git
 cd ASGD
 pip install -r requirements.txt
 python index.py
