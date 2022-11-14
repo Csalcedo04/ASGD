@@ -1,0 +1,34 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+
+<!--plantilla del formulario para actualizar datos de los documentos-->
+<div class="col-md-8 offset-md-2">
+    <form action="/update/{{document.id_}}" method="POST"  class="card bg-black text-light">
+        <div class="card-body pd-4">
+            <div class="md-3">
+                <label for="doc_name">Update Doc's name: </label>
+                <input type = "text" name = "doc_name" placeholder = "Doc's name" value = "{{document.doc_name}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="md-3">
+                <label for="author">Update author: </label>
+                <input type = "text" name = "author" placeholder = "Author" value = "{{document.author}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="md-3">
+                <label for="doc_type">Update doc's type</label>
+                <input type = "text" name = "doc_type" placeholder = "Doc's type" value = "{{document.doc_type}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="md-3">
+                <label for="doc_units">Update doc's units</label>
+                <input type = "number" name = "doc_units" placeholder = "Doc's units" value = "{{document.units}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="md-3">
+                <label for="doc_value">Update doc's value</label>
+                <input type = "number" name = "doc_value" placeholder = "Doc's value" value = "{{document.doc_value}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <br>
+            <button class="btn btn-secondary">Update</button>
+        </div>
+    </form>
+</div>
+{%endblock%}

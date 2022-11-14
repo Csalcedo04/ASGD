@@ -1,0 +1,55 @@
+{% extends 'layout.html'%}
+
+
+{% block content%}
+
+
+<div class="row">
+    <div class="p-3">
+        <!--barra de busqueda-->
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+    </div>
+    
+    <div class="col-md-5 p-1 ">
+        <!--MENSAJES POR ACCIONES-->
+        {% include('partials/_message.html') %}
+        <!--Formulario-->
+        {% include('partials/_docform.html') %}
+    </div>
+    
+
+    <!--Lista de documentos-->
+    <div class="col-md-7 p-1">
+        {% for document in document %}
+        <div class="card mb-1 text-white bg-dark">
+            <div class="card-body py-2 px-3">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold text-uppercase">{{document.doc_name}}</h5>
+                    <div>
+                        <a href="{{url_for('inventary.update', id= document.id_)}}" class="btn bg-black btn-sm rounded-0 text-white">Update</a>
+                        <a href="{{url_for('inventary.delete', id= document.id_)}}"class="btn btn-danger btn-sm rounded-0">Delete</a>
+                    </div> 
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <p class="card-text">Author: {{document.author}}</p>
+                    <p class="card-text">Genero: {{document.doc_type}}</p>
+                    <p class="card-text">Unidades: {{document.units}}</p>
+                    <p class="card-text">$ {{document.doc_value}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+
+
+</div>
+{% endblock %}
+
+    
+
+    
+   

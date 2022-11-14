@@ -1,0 +1,41 @@
+{% extends 'layout.html'%}
+
+
+{% block content%}
+
+
+<div class="row">
+    <div class="p-3">
+        <!--barra de busqueda-->
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+    </div>
+    <!--Lista de documentos-->
+    <div class="col-md-12 offset-md-0">
+        {% for document in document %}
+        <div class="card mb-1 text-white bg-dark">
+            <div class="card-body py-2 px-3">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold text-uppercase">{{document.doc_name}}</h5>
+                    <div>
+                        <a href="{{url_for('sell.index')}}" class="btn bg-black btn-sm rounded-0 text-white">Comprar</a>
+                        <a href="{{url_for('sell.index')}}"class="btn btn-danger btn-sm rounded-0">Alquilar</a>
+                    </div> 
+                </div>
+                <div>
+                    <img src="" alt="">
+                    <p class="card-text">Author: {{document.author}}</p>
+                    <p class="card-text">Genero: {{document.doc_type}}</p>
+                    <p class="card-text">Unidades: {{document.units}}</p>
+                    <p class="card-text">$ {{document.doc_value}}</p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+    </div>
+
+
+</div>
+{% endblock %}
