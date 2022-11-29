@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = 'mysecret'
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:1234@localhost/docstoredb"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
+ 
 # no cache
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 

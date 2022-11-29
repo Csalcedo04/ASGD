@@ -4,7 +4,7 @@
 
 <!--plantilla del formulario para actualizar datos de los documentos-->
 <div class="col-md-8 offset-md-2">
-    <form action="/update/{{document.id_}}" method="POST"  class="card bg-black text-light">
+    <form action="{{url_for('inventary.update', id = document.id_)}}" method="POST"  class="card bg-black text-light">
         <div class="card-body pd-4">
             <div class="md-3">
                 <label for="doc_name">Update Doc's name: </label>
@@ -20,11 +20,19 @@
             </div>
             <div class="md-3">
                 <label for="doc_units">Update doc's units</label>
-                <input type = "number" name = "doc_units" placeholder = "Doc's units" value = "{{document.units}}" class="form-control rounded-0 bg-dark border-0 text-white">
+                <input type = "number" min=0 name = "doc_units" placeholder = "Doc's units" value = "{{document.units}}" class="form-control rounded-0 bg-dark border-0 text-white">
             </div>
             <div class="md-3">
                 <label for="doc_value">Update doc's value</label>
-                <input type = "number" name = "doc_value" placeholder = "Doc's value" value = "{{document.doc_value}}" class="form-control rounded-0 bg-dark border-0 text-white">
+                <input type = "number" min=0 step=0.01 name = "doc_value" placeholder = "Doc's value" value = "{{document.doc_value}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="mb-3">
+                <label for="doc_value">Update Doc's daily value</label>
+                <input type="number" min=0 step=0.01 name="d_value" placeholder="Doc's value" value = "{{document.daily_value}}" class="form-control rounded-0 bg-dark border-0 text-white">
+            </div>
+            <div class="mb-3">
+                <label for="doc_value">Doc's dealer</label>
+                <input type="text" name="dealer" placeholder="Doc's dealer" value = "{{document.dealer_name}}" class="form-control rounded-0 bg-dark border-0 text-white">
             </div>
             <br>
             <button class="btn btn-secondary">Update</button>

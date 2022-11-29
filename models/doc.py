@@ -12,12 +12,18 @@ class docs(db.Model):
     author = db.Column(db.String(100),nullable=False)
     units = db.Column(db.Integer, nullable=False)
     doc_value = db.Column(db.Float, nullable=False)
+    daily_value = db.Column(db.Float, nullable=False)
     doc_type = db.Column(db.String(100),nullable=False)
+    dealer_name = db.Column(db.String(100), nullable=True)
 
 
-    def __init__(self, doc_name, author, units, doc_type, doc_value):
+
+
+    def __init__(self, doc_name, author, units, doc_type, doc_value, daily_value,dealer_name):
         self.doc_name = doc_name
         self.author = author
         self.units = units
         self.doc_value = doc_value
+        self.daily_value = daily_value
         self.doc_type = doc_type
+        self.dealer_name = dealer_name

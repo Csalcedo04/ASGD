@@ -1,45 +1,48 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models.doc import docs
+from models.user import User
 from utils.db import db
 
 sell = Blueprint("sell", __name__)
-
-@sell.route('/user')
-def index():
+@sell.route('/home')
+def homepage():
     document = docs.query.all()
-    return render_template('user.html', document=document)
-"""
- EN DESARROLLO
+    return render_template('users/user.html', document=document)
 
-@sell.route("/buy/<id>", methods=[ "POST","GET"])
+
+@sell.route("/buy/<string:id>", methods=[ "POST","GET"])
 def buy(id):
     # get id by id_document
     document = docs.query.get(id)
-
     if request.method == "POST":
-        docs.doc_name = request.form['doc_name']
-        docs.author = request.form['author']
-        docs.units = request.form['doc_units']
-        docs.doc_value = request.form['doc_value']
-        docs.doc_type = request.form['doc_type']
+        """primero se comprueba que aun existan unidades"""
+        units = request.form['doc_units']
+        """se resta la unidad que fue comprada y se pide el numero de dias que tendra con
+        el producto y de ello se deduce el valor a pagar"""
+        docs.units = docs.units - units
+        User.debt = User.debt + docs.doc_value
+        db.session.commit()
+        flash ('Compra exitosa')
+        return redirect(url_for('sell.homepage'))
+    return render_template("users/_buying.html", document = document)
 
+@sell.route("/borrow/<string:id>", methods=[ "POST","GET"])
+def borrow(id):
+    # get id by id_document
+    document = docs.query.get(id)
+    User.debt=1 
+    
+    if request.method == "POST":
+        """primero se comprueba que aun existan unidades"""
+      
+        """se resta la unidad que fue comprada y se pide el numero de dias que tendra con
+            el producto y de ello se deduce el valor a pagar"""
+        User.borrow_days = request.form['doc_units']
+        docs.units = docs.units - 1
+        User.debt = User.debt * docs.daily_value
         db.session.commit()
 
-        flash('Contact updated successfully!')
+        return redirect(url_for('sell.homepage'))
+        
+    return render_template("users/_borrow.html", document=document)
 
-        return redirect(url_for('sell.index'))
-    
-    return render_template("user.html", document=document)
-
-
-@sell.route("/delete/<id>", methods=["GET"])
-def borrow(id):
-    document = docs.query.get(id)
-    db.session.delete(document)
-    db.session.commit()
-
-    flash('Contact deleted successfully!')
-
-    return redirect(url_for("sell.index"))
-
-"""

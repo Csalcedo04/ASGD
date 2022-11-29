@@ -7,11 +7,10 @@
 <div class="row">
     <div class="p-3">
         <!--barra de busqueda-->
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>
+        {%include ('partials/_searchbar.html')%}
     </div>
+
+
     <!--Lista de documentos-->
     <div class="col-md-12 offset-md-0">
         {% for document in document %}
@@ -20,12 +19,12 @@
                 <div class="d-flex justify-content-between">
                     <h5 class="fw-bold text-uppercase">{{document.doc_name}}</h5>
                     <div>
-                        <a href="{{url_for('sell.index')}}" class="btn bg-black btn-sm rounded-0 text-white">Comprar</a>
-                        <a href="{{url_for('sell.index')}}"class="btn btn-danger btn-sm rounded-0">Alquilar</a>
+                        <a href="{{url_for('sell.buy',  id= document.id_)}}" class="btn bg-black btn-sm rounded-0 text-white">Comprar</a>
+                        <a href="{{url_for('sell.borrow',  id= document.id_)}}"class="btn btn-danger btn-sm rounded-0">Alquilar</a>
                     </div> 
                 </div>
                 <div>
-                    <img src="" alt="">
+                    <img src="{{ url_for('inventary.get_img', filename=filename) }}" alt="No se encontro ningun archivo de imagen">
                     <p class="card-text">Author: {{document.author}}</p>
                     <p class="card-text">Genero: {{document.doc_type}}</p>
                     <p class="card-text">Unidades: {{document.units}}</p>

@@ -1,0 +1,38 @@
+{% extends 'layout.html'%}
+
+{% block content%}
+<div class="row">
+    <div class="col-md-5 p-1 ">
+        <form action="{{url_for('sell.borrow', id = document.id_)}}" method="POST" class="card bg-black text-light" enctype="multipart/form-data">
+            <div class="card-body pg-4">
+                <div class="mb-3">
+                    <label for="doc_units">Borrow days :</label>
+                    <input type="number" min=1 max=30 name="doc_units" placeholder="Borrow days" class="form-control rounded-0 bg-dark border-0 text-white">
+                </div>
+                <button class="btn btn-secondary">save</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <div class="col-md-7 p-1">
+        <div class="card mb-1 text-white bg-dark">
+            <div class="card-body py-2 px-3">
+                <div class="d-flex justify-content-between">
+                    <h5 class="fw-bold text-uppercase">{{document.doc_name}}</h5>
+                </div>
+                <div>
+                <img src="{{ url_for('inventary.get_img', filename=filename) }}"  class="rounded float-start" width="200" height="200"
+                alt="No se encontro ningun archivo de imagen">
+                <p class="card-text">Author: {{document.author}}</p>
+                <p class="card-text">Genero: {{document.doc_type}}</p>
+                <p class="card-text">Unidades: {{document.units}}</p>
+                <p class="card-text">Valor ud: $ {{document.doc_value}}</p>
+                <p class="card-text">Valor por día: $ {{document.daily_value}}</p>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+</div>
+{%endblock%}
