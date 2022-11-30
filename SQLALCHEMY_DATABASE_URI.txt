@@ -1,0 +1,2 @@
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:1234@localhost/docstoredb"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:Btv9p4EieLDDJP9qFj1V@containers-us-west-117.railway.app:6097/railway" #despliegue
