@@ -1,10 +1,8 @@
-
-"""en proceso de desarrollo"""
 # SDK de Mercado Pago
 import mercadopago
 from models.doc import docs
 # Agrega credenciales
-sdk = mercadopago.SDK("PROD_ACCESS_TOKEN")
+sdk = mercadopago.SDK("TEST-4380247365218310-113004-fa931dc5daae26734502e0d1b04a7862-620160466")
           
 # Crea un ítem en la preferencia
 preference_data = {

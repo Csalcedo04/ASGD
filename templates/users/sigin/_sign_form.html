@@ -1,0 +1,25 @@
+
+    <main class="form-signin w-100 m-auto">
+        <form action="{{ url_for('registro.login') }}" method="POST">
+            
+            <h1 class="h3 mb-3 fw-normal">Please register your self</h1>
+            
+            </div>
+            <div class="form-floating">
+                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="User Name">
+                <label for="floatingInput">User Name</label>
+            </div>
+            <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="bottom">Do you have an account?  <a class="bottom" href="{{url_for('registro.login')}}"> Sign Up here</a></p>
+          </div>
+        </form>
+    </main>

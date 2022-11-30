@@ -1,7 +1,9 @@
 from utils.db import db
+from werkzeug.security import check_password_hash
+from flask_login import UserMixin
 
 
-class User(db.Model) :
+class User(db.Model, UserMixin) :
     """
     diseño y creacion de la tabla donde iran la informacion
     de los usuarios  en la base de datos 
@@ -10,17 +12,12 @@ class User(db.Model) :
     __tablename__='user'
     
     id_user = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(100))
-    last_name = db.Column(db.String(100))
+    username = db.Column(db.String(100))
     borrow_days = db.Column(db.Integer)
     debt = db.Column(db.Float)
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
-    def __init__(self, first_name, last_name, borrow_days, debt, email,password) : 
-        self.first_name = first_name
-        self.last_name = last_name
-        self.borrow_days = borrow_days
-        self.debt = debt
-        self.email = email
-        self.password = password
+    
